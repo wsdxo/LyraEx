@@ -71,6 +71,11 @@ void ALyraExPlayer::SetupPlayerInputComponent(class UInputComponent* PlayerInput
 	}
 }
 
+USkeletalMeshComponent* ALyraExPlayer::GetCharacterMesh_Implementation()
+{
+	return GetMesh();
+}
+
 ULyraAttributeSetBase* ALyraExPlayer::GetAttribute()
 {
 	return AttributeSet;

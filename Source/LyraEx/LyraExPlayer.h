@@ -1,5 +1,6 @@
 #pragma once
 #include "LyraExCharacter.h"
+#include "ItemInteraction/ItemInteractionInterface.h"
 #include "LyraExPlayer.generated.h"
 
 
@@ -11,7 +12,7 @@ struct FGameplayTag;
 class UWeaponAbilityInputConfig;
 
 UCLASS()
-class ALyraExPlayer:public ALyraExCharacter
+class ALyraExPlayer:public ALyraExCharacter,public IItemInteractionInterface
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category=TPAbility,meta = (AllowPrivateAccess = "true"))
@@ -44,6 +45,8 @@ public:
 	virtual void NotifyControllerChanged() override;
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	virtual USkeletalMeshComponent* GetCharacterMesh_Implementation() override;
 
 	ULyraAttributeSetBase* GetAttribute();
 
