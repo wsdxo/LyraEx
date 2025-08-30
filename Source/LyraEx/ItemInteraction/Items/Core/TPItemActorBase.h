@@ -34,16 +34,17 @@ protected:
 	UFUNCTION(BlueprintPure,Category="Third Person ItemActorBase")
 	ETPItemType GetTPItemType()const {return TPItemType;}
 
-	UFUNCTION(BlueprintNativeEvent,Category="Third Person ItemActorBase")
-	void OnStartTrigger(UTPItemInteractionComponent*ItemInteractionComponent,bool bForceInHand);
-
-	UFUNCTION(BlueprintNativeEvent,Category="Third Person ItemActorBase")
-	void OnEndTrigger(UTPItemInteractionComponent*ItemInteractionComponent,bool bIsPutPack);
 
 protected:
 	virtual bool CanStartTrigger_Implementation(UTPItemInteractionComponent* ItemInteractionComponent,bool bForceInHand);
 	virtual bool CanEndTrigger_Implementation(UTPItemInteractionComponent* ItemInteractionComponent,bool bIsPutPack);
+	
+	UFUNCTION(BlueprintNativeEvent,Category="Third Person ItemActorBase")
+	void OnStartTrigger(UTPItemInteractionComponent*ItemInteractionComponent,bool bForceInHand);
 	virtual void OnStartTrigger_Implementation(UTPItemInteractionComponent*ItemInteractionComponent,bool bForceInHand);
+
+	UFUNCTION(BlueprintNativeEvent,Category="Third Person ItemActorBase")
+	void OnEndTrigger(UTPItemInteractionComponent*ItemInteractionComponent,bool bIsPutPack);
 	virtual void OnEndTrigger_Implementation(UTPItemInteractionComponent*ItemInteractionComponent,bool bIsPutPack);
 
 protected:

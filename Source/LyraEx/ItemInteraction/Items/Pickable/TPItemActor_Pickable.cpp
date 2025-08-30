@@ -28,14 +28,14 @@ void ATPItemActor_Pickable::OnStartTrigger_Implementation(UTPItemInteractionComp
 			{
 				if (ItemDefinition)
 				{
-					// if (ItemDefinition.GetDefaultObject()->StartTriggerAnimMontage)
-					// {
-					// 	ItemInteractionComponent->PlayMontageMulticast(ItemDefinition.GetDefaultObject()->StartTriggerAnimMontage);
-					// }
-					// AttachToComponent(CharacterMesh,
-					// 	FAttachmentTransformRules::SnapToTargetNotIncludingScale,
-					// 	ItemDefinition.GetDefaultObject()->ItemSlotName);
-					// SetActorRelativeTransform(ItemDefinition.GetDefaultObject()->ItemRelativeTransform);
+					if (ItemDefinition.GetDefaultObject()->StartTriggerAnimMontage)
+					{
+						ItemInteractionComponent->PlayMontageMulticast(ItemDefinition.GetDefaultObject()->StartTriggerAnimMontage);
+					}
+					AttachToComponent(CharacterMesh,
+						FAttachmentTransformRules::SnapToTargetNotIncludingScale,
+						ItemDefinition.GetDefaultObject()->ItemSlotName);
+					SetActorRelativeTransform(ItemDefinition.GetDefaultObject()->ItemRelativeTransform);
 				}
 			}
 		}
@@ -51,10 +51,10 @@ void ATPItemActor_Pickable::OnEndTrigger_Implementation(UTPItemInteractionCompon
 	//todo:丢弃动画
 	if (!bIsPutPack)
 	{
-		// if (ItemDefinition&&ItemDefinition.GetDefaultObject()->EndTriggerAnimMontage)
-		// {
-		// 	ItemInteractionComponent->PlayMontageMulticast(ItemDefinition.GetDefaultObject()->EndTriggerAnimMontage);
-		// }
+		if (ItemDefinition&&ItemDefinition.GetDefaultObject()->EndTriggerAnimMontage)
+		{
+			ItemInteractionComponent->PlayMontageMulticast(ItemDefinition.GetDefaultObject()->EndTriggerAnimMontage);
+		}
 	}
 }
 
@@ -84,9 +84,9 @@ void ATPItemActor_Pickable::ThrowItem_Implementation(UTPItemInteractionComponent
 		{
 			if (ItemInteractionComponent&&ItemInteractionComponent->GetOwner())
 			{
-				// InItemMesh->AddImpulse(ItemInteractionComponent->GetOwner()->GetActorForwardVector()*ItemDefinition.GetDefaultObject()->ThrowItemSpeed,
-				// 	NAME_None,
-				// 	true);
+				InItemMesh->AddImpulse(ItemInteractionComponent->GetOwner()->GetActorForwardVector()*ItemDefinition.GetDefaultObject()->ThrowItemSpeed,
+					NAME_None,
+					true);
 			}
 		}
 	}

@@ -10,7 +10,7 @@ class ATPItemActor_Pickable:public ATPItemActorBase
 {
 	GENERATED_BODY()
 
-public:
+protected:
 	ATPItemActor_Pickable();
 	//拾取物种类
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="TPItemActor_Pickable")
